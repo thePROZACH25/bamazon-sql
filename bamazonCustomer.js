@@ -11,11 +11,34 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "PlayStation1!",
-  database: "products"
+  password: "Playstation1!",
+  database: "bamazon",
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) throw err;
   startSear();
 });
+
+function startSear() {
+  inquire
+    .prompt({
+      name: "menu",
+      type: "list",
+      message: "Welcome to Bamazon!",
+      choices: ["Search Product", "Exit"],
+    })
+    .then(function (answer) {
+      switch (answer.menu) {
+        case "Search Product":
+          productSear();
+          break;
+
+        case "Exit":
+          connection.end();
+          break;
+      }
+    });
+}
+
+function productSear() {}
