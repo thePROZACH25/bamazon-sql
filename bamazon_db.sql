@@ -13,5 +13,3 @@ CREATE TABLE products (
 
 SELECT * FROM products;
 
--- INSERT INTO products(product_name, department_name, stock_quantity, price)
--- VALUE
