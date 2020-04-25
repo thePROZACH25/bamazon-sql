@@ -83,3 +83,31 @@ var viewProducts = function () {
   });
   managerApp();
 };
+
+var checkInventory = function(){
+    var query = "SELECT * FROM products WHERE stock_quantity < 5";
+    connection.query(query, function (err, data){
+        if (err) throw err;
+        
+        var invenTable = new Table({
+            head: ["item_id", "product_name", "stock_quantity"],
+            colWidths: [9, 25, 9],
+            colAligns: ["center", "center", "right"],
+            style: {
+              head: ["aqua"],
+              compact: true,
+            },
+          });
+          for (var i = 0; i < data.length; i++) {
+            invenTable.push([data[i].item_id, data[i].product_name, data[i].stock_quantity]);
+          }
+          console.log("");
+          console.log(invenTable.toString());
+          console.log("");
+          console.log("");
+          console.log("");
+          console.log("");
+          console.log("");
+    });
+    managerApp();
+};
