@@ -228,12 +228,12 @@ var addInventory = function () {
   }
 };
 
-var newProductAdd = function() {
-    inquire
+var newProductAdd = function () {
+  inquire
     .prompt({
       name: "action",
       type: "list",
-      message: "Would you like to add a new Item?",
+      message: "Would you like to add a new product?",
       choices: ["Yes", "No"],
     })
     .then(function (answer) {
@@ -246,4 +246,68 @@ var newProductAdd = function() {
           break;
       }
     });
-}
+
+  function newItem() {
+    inquire
+      .prompt({
+        name: "new",
+        type: "input",
+        message: "What is the item_id number for this item?",
+      })
+      .then(function (num) {
+        var num = num.new;
+
+        inquire
+          .prompt({
+            name: "new",
+            type: "input",
+            message: "What is the product_name of the item you would like to?",
+          })
+          .then(function (answer) {
+            var name = answer.new;
+            inquire
+              .prompt({
+                name: "new",
+                type: "input",
+                message: "What department_name does it belong to?",
+              })
+              .then(function (answ2) {
+                var depart = answ2.new;
+                inquire
+                  .prompt({
+                    name: "new",
+                    type: "input",
+                    message: "How stock_quantity would you like to add?",
+                  })
+                  .then(function (answ3) {
+                    var stock = answ3.new;
+                    inquire
+                      .prompt({
+                        name: "new",
+                        type: "input",
+                        message: "What is the starting price of the item",
+                      })
+                      .then(function (answ4) {
+                        var price = answ4.new;
+                        connection.query(
+                          "INSERT INTO products SET ?",
+                          {
+                            item_id: num,
+                            product_name: name,
+                            department_name: depart,
+                            stock_quantity: stock,
+                            price: price,
+                          },
+                          function (err, res) {
+                            if (err) throw err;
+                            console.log("New product added");
+                            managerApp();
+                          }
+                        );
+                      });
+                  });
+              });
+          });
+      });
+  }
+};
