@@ -229,5 +229,21 @@ var addInventory = function () {
 };
 
 var newProductAdd = function() {
-    
+    inquire
+    .prompt({
+      name: "action",
+      type: "list",
+      message: "Would you like to add a new Item?",
+      choices: ["Yes", "No"],
+    })
+    .then(function (answer) {
+      switch (answer.action) {
+        case "Yes":
+          newItem();
+          break;
+        case "No":
+          managerApp();
+          break;
+      }
+    });
 }
