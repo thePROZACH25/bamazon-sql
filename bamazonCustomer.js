@@ -36,7 +36,12 @@ var display = function () {
     for (var i = 0; i < res.length; i++) {
       table.push([res[i].item_id, res[i].product_name, res[i].price]);
     }
+    console.log("");
     console.log(table.toString());
+    console.log("");
+    console.log("");
+    console.log("");
+    console.log("");
     console.log("");
   });
   shop();
@@ -63,40 +68,49 @@ var shop = function () {
             );
             shop();
           } else {
-            inquire.prompt({
-              name: "quantity",
-              type: "input",
-              message: "How many would you like to purchase?"
-            }).then(function(answerSec){
-              var quantity = answerSec.quantity;
+            inquire
+              .prompt({
+                name: "quantity",
+                type: "input",
+                message: "How many would you like to purchase?",
+              })
+              .then(function (answerSec) {
+                var quantity = answerSec.quantity;
 
-              if(quantity> res[0].stock_quantity){
-                console.log("Our Apologies! Insufficient quantity. We only have " + res[0].stock_quantity + "items of the product.")
-                shop();
-              }else{
-                var endTotal = quantity * res[0].price
-                console.log("");
-                console.log(res[0].product_name + " purchased");
-                console.log(quantity + " qty @ $" + res[0].price);
-                console.log("Total: $" + endTotal);
-                console.log("");
+                if (quantity > res[0].stock_quantity) {
+                  console.log(
+                    "Our Apologies! Insufficient quantity. We only have " +
+                      res[0].stock_quantity +
+                      "items of the product."
+                  );
+                  shop();
+                } else {
+                  var endTotal = quantity * res[0].price;
+                  console.log("");
+                  console.log(res[0].product_name + " purchased");
+                  console.log(quantity + " qty @ $" + res[0].price);
+                  console.log("Total: $" + endTotal);
+                  console.log("");
 
-                var newQuantity = res[0].stock_quantity - quantity;
-                connection.query(
-                  "UPDATE products SET stock_quantity = " + newQuantity + " WHERE item_id = " + res[0].item_id, function(err, resUpdate){
-                    if (err) throw err;
-                    console.log('');
-                    console.log('Your order has been processed!');
-                    console.log("****Thank you for shopping with us!****");
-                    console.log('');
-                    connection.end();
-                  }
-                )
-              }
-            });
+                  var newQuantity = res[0].stock_quantity - quantity;
+                  connection.query(
+                    "UPDATE products SET stock_quantity = " +
+                      newQuantity +
+                      " WHERE item_id = " +
+                      res[0].item_id,
+                    function (err, resUpdate) {
+                      if (err) throw err;
+                      console.log("");
+                      console.log("Your order has been processed!");
+                      console.log("****Thank you for shopping with us!****");
+                      console.log("");
+                      connection.end();
+                    }
+                  );
+                }
+              });
           }
         }
       );
     });
 };
-

@@ -16,8 +16,7 @@ connection.connect(function (err) {
 });
 
 var managerApp = function () {
-  //   connection.query("SELECT * FROM products", function (err, res) {
-  //     if (err) throw err;
+
   console.log("");
   console.log("----------------------------");
   console.log("Welcome to Bamzon's Manager App");
@@ -35,11 +34,11 @@ var managerApp = function () {
         "View Low Inventory",
         "Add to Inventory",
         "Add New Product",
-        "Exit"
-      ]
+        "Exit",
+      ],
     })
     .then(function (firstAnswer) {
-      switch (firstAnswer.action) {
+      switch (firstAnswer.menu) {
         case "View Products for Sale":
           viewProducts();
           break;
@@ -57,4 +56,30 @@ var managerApp = function () {
           break;
       }
     });
+};
+
+var viewProducts = function () {
+  connection.query("SELECT * FROM products", function (err, res) {
+    if (err) throw err;
+    var table = new Table({
+      head: ["item_id", "product_name", "stock_quantity", "price"],
+      colWidths: [9, 25, 9, 9],
+      colAligns: ["center", "center", "center", "right"],
+      style: {
+        head: ["aqua"],
+        compact: true,
+      },
+    });
+    for (var i = 0; i < res.length; i++) {
+      table.push([res[i].item_id, res[i].product_name, res[i].stock_quantity, res[i].price]);
+    }
+    console.log("");
+    console.log(table.toString());
+    console.log("");
+    console.log("");
+    console.log("");
+    console.log("");
+    console.log("");
+  });
+  managerApp();
 };
