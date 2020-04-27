@@ -1,7 +1,9 @@
+// NPM Packages
 var mysql = require("mysql");
 var inquire = require("inquirer");
 var Table = require("cli-table2");
 
+// Var for adding the connectino to MySQL
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -10,20 +12,26 @@ var connection = mysql.createConnection({
   database: "bamazon",
 });
 
+// Test the connection
 connection.connect(function (err) {
   if (err) throw err;
   display();
 });
 
+// Var function that displays the product list
 var display = function () {
   connection.query("SELECT * FROM products", function (err, res) {
     if (err) throw err;
+
+    // Opening Message
     console.log("----------------------------");
     console.log("     Welcome to Bamzon      ");
     console.log("----------------------------");
     console.log("");
     console.log("Find Your Product Below");
     console.log("");
+
+    // Var function to format the product table
     var table = new Table({
       head: ["item_id", "product_name", "price"],
       colWidths: [9, 25, 9],
@@ -36,6 +44,8 @@ var display = function () {
     for (var i = 0; i < res.length; i++) {
       table.push([res[i].item_id, res[i].product_name, res[i].price]);
     }
+
+    // Displays the product table
     console.log("");
     console.log(table.toString());
     console.log("");
@@ -47,7 +57,9 @@ var display = function () {
   shop();
 };
 
+// Var function to purchase from the product list
 var shop = function () {
+  // Prompt to select item
   inquire
     .prompt({
       name: "productToBuy",
@@ -55,19 +67,26 @@ var shop = function () {
       message: "Enter a item_id of the item you wish to buy!",
     })
     .then(function (answerFirst) {
+
+      // Var for item_id
       var select = answerFirst.productToBuy;
 
+      // Connection to MySQL var
       connection.query(
         "SELECT * FROM products WHERE item_id=?",
         select,
         function (err, res) {
           if (err) throw err;
+
+          // If product doesn't exist
           if (res.length === 0) {
             console.log(
               "That product doesn't exist, enter a item_id from the list above"
             );
             shop();
           } else {
+
+            // Prompt to select the quantity
             inquire
               .prompt({
                 name: "quantity",
@@ -75,8 +94,11 @@ var shop = function () {
                 message: "How many would you like to purchase?",
               })
               .then(function (answerSec) {
+
+                // Var for quantity
                 var quantity = answerSec.quantity;
 
+                // If trying to purchase more then the quantity in stock
                 if (quantity > res[0].stock_quantity) {
                   console.log(
                     "Our Apologies! Insufficient quantity. We only have " +
@@ -85,6 +107,8 @@ var shop = function () {
                   );
                   shop();
                 } else {
+
+                  // Display the item, quantity and totel of purchase
                   var endTotal = quantity * res[0].price;
                   console.log("");
                   console.log(res[0].product_name + " purchased");
@@ -92,6 +116,7 @@ var shop = function () {
                   console.log("Total: $" + endTotal);
                   console.log("");
 
+                  // Updates the quantity in MySQL
                   var newQuantity = res[0].stock_quantity - quantity;
                   connection.query(
                     "UPDATE products SET stock_quantity = " +
