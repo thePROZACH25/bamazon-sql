@@ -66,4 +66,4 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
 
 ## Authors
 
-* **Zachary Leford** - *JS/MySQL/Node.js* - [Zachary Ledford](https://github.com/thePROZACH25)
+* [Zachary Ledford](https://github.com/thePROZACH25) - *JS/MySQL/Node.js* - 
