@@ -176,7 +176,7 @@ var addInventory = function () {
           select,
           function (err, info) {
             if (err) throw err;
-            console.log(info);
+            
             inquire
               .prompt({
                 name: "quantity",

@@ -51,8 +51,13 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
     <img src="images/Screen Shot 2020-04-27 at 5.18.00 PM.png" width="200">
 
     * If the manager selects `View Low Inventory`, it'll list all the products with less than five items in its stock_quantity column.
+    <img src="images/Screen Shot 2020-04-27 at 5.31.10 PM.png" width="200">
 
     * If the manager selects `Add to Inventory`, it allows the manager to select a product and add inventory.
+    <img src="images/Screen Shot 2020-04-27 at 5.35.12 PM.png" width="200">
+    <img src="images/Screen Shot 2020-04-27 at 5.36.06 PM.png" width="200">
+    <img src="images/Screen Shot 2020-04-27 at 5.37.43 PM.png" width="200">
+    <img src="images/Screen Shot 2020-04-27 at 5.45.08 PM.png" width="200">
 
     * If the manager selects `Add New Product`, it allows the manager to add a new product to the store.
 
