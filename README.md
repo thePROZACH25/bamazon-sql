@@ -31,9 +31,9 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
 
         * However, if there is not enough of the product in stock, it will tell the usere that there isn't enough of the product.
         <img src="images/Screen Shot 2020-04-27 at 4.38.30 PM.png" width="200>
-        
+
         * If the purchase goes through, it updates the stock quantity to relect the purchase.
-        <img src="bamazon-sql/images/Screen Shot 2020-04-27 at 4.39.04 PM.png" width="200>
+        <img src="images/Screen Shot 2020-04-27 at 4.39.04 PM.png" width="200>
 
 -----------------------------
 
