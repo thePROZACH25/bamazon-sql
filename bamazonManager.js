@@ -176,7 +176,7 @@ var addInventory = function () {
           select,
           function (err, info) {
             if (err) throw err;
-
+            console.log(info);
             inquire
               .prompt({
                 name: "quantity",
@@ -205,7 +205,7 @@ var addInventory = function () {
                   console.log("");
                   console.log("");
 
-                  var newQuantity = info[0].stock_quantity + quantity;
+                  var newQuantity = parseInt(quantity) + info[0].stock_quantity;
                   connection.query(
                     "UPDATE products SET stock_quantity = " +
                       newQuantity +
@@ -265,6 +265,7 @@ var newProductAdd = function () {
           })
           .then(function (answer) {
             var name = answer.new;
+
             inquire
               .prompt({
                 name: "new",
@@ -273,6 +274,7 @@ var newProductAdd = function () {
               })
               .then(function (answ2) {
                 var depart = answ2.new;
+
                 inquire
                   .prompt({
                     name: "new",
@@ -281,6 +283,7 @@ var newProductAdd = function () {
                   })
                   .then(function (answ3) {
                     var stock = answ3.new;
+
                     inquire
                       .prompt({
                         name: "new",
@@ -289,6 +292,7 @@ var newProductAdd = function () {
                       })
                       .then(function (answ4) {
                         var price = answ4.new;
+
                         connection.query(
                           "INSERT INTO products SET ?",
                           {
@@ -300,7 +304,10 @@ var newProductAdd = function () {
                           },
                           function (err, res) {
                             if (err) throw err;
-                            console.log("New product added");
+                            console.log("");
+                            console.log("*****New product added****");
+                            console.log("");
+                            console.log("");
                             managerApp();
                           }
                         );
