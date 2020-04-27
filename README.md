@@ -61,6 +61,8 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
     <img src="images/Screen Shot 2020-04-27 at 5.47.08 PM.png" width="200">
 
     * If the manager selects `Add New Product`, it allows the manager to add a new product to the store.
+    <img src="images/Screen Shot 2020-04-27 at 5.58.29 PM.png" width="200">
+    <img src="images/Screen Shot 2020-04-27 at 6.01.13 PM.png" width="200">
 
     * If the manager selects `Exit`, it ends the session and doesn't go back to the menu.
 
