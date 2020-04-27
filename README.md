@@ -50,7 +50,7 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
 - Node.js
 - Inquire NPM Package (https://www.npmjs.com/package/inquirer)
 - MYSQL NPM Package (https://www.npmjs.com/package/mysql)
-
+- Cli-Table2 NPM Package (https://www.npmjs.com/package/cli-table2)
 ### Prerequisites
 
 ```
