@@ -45,8 +45,10 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
         * Add to Inventory
         * Add New Product
         * Exit
+        <img src="images/Screen Shot 2020-04-27 at 5.17.14 PM.png" width="200">
     
     * If the manager selects `View Products for Sale`, it lists all of the products in the store including all of their details.
+    <img src="images/Screen Shot 2020-04-27 at 5.18.00 PM.png" width="200">
 
     * If the manager selects `View Low Inventory`, it'll list all the products with less than five items in its stock_quantity column.
 
