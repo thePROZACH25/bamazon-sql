@@ -11,19 +11,25 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
     * bamazonManager.js - 'node bamazonManager.js'
 - Run 'ctrl + c' or arrow down to 'Exit' to exit each mode
 
+- Make sure created your data base in MySQL
+<img src="images/Screen Shot 2020-04-27 at 4.30.05 PM.png" width="200">
+
 ### What Each JavaScript Does
 
 1. `bamazonCustomer.js`
 
     * Prints products in the store
-
+    <img src="images/Screen Shot 2020-04-27 at 4.36.55 PM.png" width="200">
     * Prompts customer which product they would like to by ID number
-
+    <img src="images/Screen Shot 2020-04-27 at 4.37.11 PM.png" width="200">
     * Then asks for the quantity
 
         * If there is a sufficient amount of the product in stock, it will return for that purchase.
+        <img src="images/Screen Shot 2020-04-27 at 4.37.48 PM.png" width="200">
         * However, if there is not enough of the product in stock, it will tell the usere that there isn't enough of the product.
+        <img src="images/Screen Shot 2020-04-27 at 4.38.30 PM.png" width="200>
         * If the purchase goes through, it updates the stock quantity to relect the purchase.
+        <img src="bamazon-sql/images/Screen Shot 2020-04-27 at 4.39.04 PM.png" width="200>
 
 -----------------------------
 
