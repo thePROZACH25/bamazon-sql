@@ -58,6 +58,7 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
     <img src="images/Screen Shot 2020-04-27 at 5.36.06 PM.png" width="200">
     <img src="images/Screen Shot 2020-04-27 at 5.37.43 PM.png" width="200">
     <img src="images/Screen Shot 2020-04-27 at 5.45.08 PM.png" width="200">
+    <img src="images/Screen Shot 2020-04-27 at 5.47.08 PM.png" width="200">
 
     * If the manager selects `Add New Product`, it allows the manager to add a new product to the store.
 
