@@ -20,8 +20,10 @@ The goal was to create an Amazon-like store front using Node.js and MySQL.
 
     * Prints products in the store
     <img src="images/Screen Shot 2020-04-27 at 4.36.55 PM.png" width="200">
+    
     * Prompts customer which product they would like to by ID number
     <img src="images/Screen Shot 2020-04-27 at 4.37.11 PM.png" width="200">
+    
     * Then asks for the quantity
 
         * If there is a sufficient amount of the product in stock, it will return for that purchase.
